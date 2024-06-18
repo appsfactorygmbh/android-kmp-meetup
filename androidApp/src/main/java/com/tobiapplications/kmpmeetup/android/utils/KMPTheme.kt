@@ -1,4 +1,4 @@
-package com.tobiapplications.kmpmeetup.android
+package com.tobiapplications.kmpmeetup.android.utils
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,21 +16,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun MyApplicationTheme(
+fun KMPTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
         darkColorScheme(
-            primary = Color(0xFF000000),
-            secondary = Color(0xFFFF0000),
-            tertiary = Color(0xFFFFFFFF)
+            primary = Color(0xFFFF0000),
+            secondary = Color(0xFF000000),
+            tertiary = Color(0xFF00FFFF)
         )
     } else {
         lightColorScheme(
-            primary = Color(0xFFFFFFFF),
-            secondary = Color(0xFFFF0000),
-            tertiary = Color(0xFF000000)
+            primary = Color(0xFFFF0000),
+            secondary = Color(0xFF000000),
+            tertiary = Color(0xFF00FFFF)
         )
     }
     val typography = Typography(
