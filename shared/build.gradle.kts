@@ -29,6 +29,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
+            implementation(libs.koin.core)
             implementation(libs.kotlin.coroutines.core)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.contentnegotiation)

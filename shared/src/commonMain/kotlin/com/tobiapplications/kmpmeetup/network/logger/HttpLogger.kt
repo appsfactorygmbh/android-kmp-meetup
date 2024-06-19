@@ -1,4 +1,4 @@
-package com.tobiapplications.kmpmeetup.network.utils
+package com.tobiapplications.kmpmeetup.network.logger
 
 import io.ktor.client.plugins.logging.Logger
 

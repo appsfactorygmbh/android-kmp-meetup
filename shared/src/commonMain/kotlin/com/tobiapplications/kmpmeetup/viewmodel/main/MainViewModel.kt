@@ -4,15 +4,15 @@ import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import com.rickclephas.kmp.observableviewmodel.MutableStateFlow
 import com.rickclephas.kmp.observableviewmodel.ViewModel
 import com.rickclephas.kmp.observableviewmodel.launch
-import com.tobiapplications.kmpmeetup.network.datasource.NetworkDatasourceImpl
+import com.tobiapplications.kmpmeetup.domain.GetJokeUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 
-open class MainViewModel : ViewModel() {
-
-    private val datasource = NetworkDatasourceImpl()
+class MainViewModel(
+    private val getJokeUseCase: GetJokeUseCase
+) : ViewModel() {
 
     private val _menuUiState = MutableStateFlow<MainUiState>(viewModelScope, MainUiState.Idle)
     @NativeCoroutinesState
@@ -22,7 +22,7 @@ open class MainViewModel : ViewModel() {
         viewModelScope.launch {
             _menuUiState.update { MainUiState.Loading }
             delay(1000)
-            val joke = datasource.getJoke()
+            val joke = getJokeUseCase.invoke()
             _menuUiState.update { MainUiState.Data(jokeResponse = joke) }
         }
     }

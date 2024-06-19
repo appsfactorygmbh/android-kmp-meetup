@@ -1,10 +1,12 @@
 
 import SwiftUI
-
+import shared
 
 struct DetailScreen : View {
+    
+    let platform : Platform = koin.platform
     var body: some View {
-        Text("test2")
+        Text(platform.name)
     }
 }
 

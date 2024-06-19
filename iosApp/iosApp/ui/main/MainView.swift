@@ -7,8 +7,10 @@ import KMPObservableViewModelSwiftUI
 struct MainView: View {
     
     @State var showSecondScreen = false
-    @StateViewModel var viewModel = MainViewModel()
-    
+    @StateViewModel var viewModel: MainViewModel = MainViewModel(
+        getJokeUseCase: koin.usecases.getJokeUseCase
+    )
+
     var body: some View {
         NavigationStack {
             VStack(alignment: .center) {
@@ -18,7 +20,7 @@ struct MainView: View {
                 }.buttonStyle(.borderedProminent)
                     .padding(.top, 24)
                     .tint(.red)
-                MainUiStateView(mainUiState: viewModel.menuUiState)
+                MainContent(mainUiState: viewModel.menuUiState)
                     .padding(.top, 24)
                 Button("Show next screen") {
                     showSecondScreen = true
