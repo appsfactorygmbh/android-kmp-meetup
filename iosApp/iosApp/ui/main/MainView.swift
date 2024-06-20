@@ -6,32 +6,10 @@ import KMPObservableViewModelSwiftUI
 
 struct MainView: View {
     
-    @State var showSecondScreen = false
-    @StateViewModel var viewModel: MainViewModel = MainViewModel(
-        getJokeUseCase: koin.usecases.getJokeUseCase
-    )
-
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .center) {
-                Text(Greeting().greet())
-                Button("Request joke") {
-                    viewModel.requestJoke()
-                }.buttonStyle(.borderedProminent)
-                    .padding(.top, 24)
-                    .tint(.red)
-                MainContent(mainUiState: viewModel.menuUiState)
-                    .padding(.top, 24)
-                Button("Show next screen") {
-                    showSecondScreen = true
-                }.buttonStyle(.borderedProminent).tint(.red)
-            }
-            .navigationTitle("Joke App")
-            .padding(24)
-            .sheet(
-                isPresented: $showSecondScreen,
-                content: { DetailScreen() })
-        
+        NavigationView {
+            OverviewView()
+            DetailView()
         }
     }
 }

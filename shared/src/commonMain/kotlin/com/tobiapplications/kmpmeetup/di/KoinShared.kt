@@ -1,9 +1,13 @@
 package com.tobiapplications.kmpmeetup.di
 
 import com.tobiapplications.kmpmeetup.Platform
-import com.tobiapplications.kmpmeetup.data.JokeRepository
-import com.tobiapplications.kmpmeetup.data.JokeRepositoryImpl
+import com.tobiapplications.kmpmeetup.data.joke.JokeRepository
+import com.tobiapplications.kmpmeetup.data.joke.JokeRepositoryImpl
+import com.tobiapplications.kmpmeetup.data.platform.PlatformRepository
+import com.tobiapplications.kmpmeetup.data.platform.PlatformRepositoryImpl
 import com.tobiapplications.kmpmeetup.domain.GetJokeUseCase
+import com.tobiapplications.kmpmeetup.domain.GetJokesUseCase
+import com.tobiapplications.kmpmeetup.domain.GetPlatformUseCase
 import com.tobiapplications.kmpmeetup.getPlatform
 import com.tobiapplications.kmpmeetup.network.client.HttpClientProvider
 import com.tobiapplications.kmpmeetup.network.client.HttpClientProviderImpl
@@ -40,12 +44,27 @@ object KoinShared {
                 networkDatasource = get()
             )
         }
+        single<PlatformRepository> {
+            PlatformRepositoryImpl(
+                platform = get()
+            )
+        }
     }
 
     private val domainModule = module {
         factory {
             GetJokeUseCase(
                 jokeRepository = get()
+            )
+        }
+        factory {
+            GetJokesUseCase(
+                jokeRepository = get()
+            )
+        }
+        factory {
+            GetPlatformUseCase(
+                platformRepository = get()
             )
         }
     }

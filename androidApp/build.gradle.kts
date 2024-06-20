@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -45,9 +46,11 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
+    implementation(libs.compose.navigation)
     implementation(libs.androidx.activity.compose)
     implementation(libs.koin.android)
     implementation(libs.koin.compose)
     implementation(libs.kotlin.coroutines.android)
+    implementation(libs.kotlin.serialization)
     debugImplementation(libs.compose.ui.tooling)
 }

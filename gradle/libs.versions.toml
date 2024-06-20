@@ -4,11 +4,13 @@ androidx-activityCompose = "1.9.0"
 androidx-lifecycle = "2.8.2"
 compose = "1.6.8"
 compose-material3 = "1.2.1"
+compose-navigation = "2.8.0-beta03"
 kmp-observableviewmodel = "1.0.0-BETA-3"
 kmp-nativecoroutines = "1.0.0-ALPHA-31"
 koin = "3.5.3"
 kotlin = "2.0.0"
 kotlin-coroutines = "1.8.1"
+kotlin-serialization = "1.6.3"
 ktor = "2.3.11"
 ksp = "2.0.0-1.0.21"
 
@@ -20,12 +22,14 @@ compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 kmp-observableviewmodel = { module = "com.rickclephas.kmp:kmp-observableviewmodel-core", version.ref = "kmp-observableviewmodel" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 ktor-client-contentnegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
