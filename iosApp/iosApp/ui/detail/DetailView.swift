@@ -10,8 +10,8 @@ struct DetailView : View {
         switch self.viewModel.jokeState {
         case .initialLoading:
             ProgressView()
-        case .data(let jokeResponse):
-            JokeTextView(jokeResponse: jokeResponse)
+        case .data(let joke):
+            JokeTextView(joke: joke)
                 .padding(.all, 24)
         }
     }

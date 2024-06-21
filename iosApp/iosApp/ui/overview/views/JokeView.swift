@@ -15,7 +15,7 @@ struct JokeView: View {
             case is JokeUiStateLoading:
                 ProgressView()
             case let dataState as JokeUiStateData:
-                JokeTextView(jokeResponse: dataState.jokeResponse)
+                JokeTextView(joke: dataState.joke)
             default:
                 Text("")
             }

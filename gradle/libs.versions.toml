@@ -26,7 +26,6 @@ androidx-compose-material3 = { module = "androidx.compose.material3:material3", 
 androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-compose-navigation" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidx-room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
 androidx-sqlite = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidx-sqlite" }
 kmp-observableviewmodel = { module = "com.rickclephas.kmp:kmp-observableviewmodel-core", version.ref = "kmp-observableviewmodel" }

@@ -3,21 +3,21 @@ import shared
 
 
 struct JokeTextView: View {
-    var jokeResponse: JokeResponse
+    var joke: Joke
     
-    init(jokeResponse: JokeResponse) {
-        self.jokeResponse = jokeResponse
+    init(joke: Joke) {
+        self.joke = joke
     }
     
     var body: some View {
         VStack {
-            if (!self.jokeResponse.joke.isEmpty) {
-                Text(jokeResponse.joke)
+            if (!self.joke.jokeText.isEmpty) {
+                Text(joke.jokeText)
                     .multilineTextAlignment(.center)
-            } else if (!jokeResponse.question.isEmpty && !jokeResponse.answer.isEmpty) {
-                Text(jokeResponse.question)
+            } else if (!joke.question.isEmpty && !joke.answer.isEmpty) {
+                Text(joke.question)
                     .multilineTextAlignment(.center)
-                Text(jokeResponse.answer)
+                Text(joke.answer)
                     .multilineTextAlignment(.center)
             }
         }

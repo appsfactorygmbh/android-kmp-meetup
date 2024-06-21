@@ -22,7 +22,7 @@ extension DetailView {
                 .sink(
                     receiveCompletion: { _ in },
                     receiveValue: { [weak self] item in
-                        self?.jokeState = .data(jokeResponse: item)
+                        self?.jokeState = .data(joke: item)
                     }
                 ).store(in: &self.cancellables)
         }
