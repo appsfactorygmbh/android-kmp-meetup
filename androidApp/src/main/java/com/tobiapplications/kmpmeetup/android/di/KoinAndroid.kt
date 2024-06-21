@@ -1,7 +1,8 @@
 package com.tobiapplications.kmpmeetup.android.di
 
-import com.tobiapplications.kmpmeetup.android.ui.detail.DetailViewModel
-import com.tobiapplications.kmpmeetup.viewmodel.overview.OverviewViewModel
+import com.tobiapplications.kmpmeetup.android.ui.database.DatabaseViewModel
+import com.tobiapplications.kmpmeetup.android.ui.jokes.JokesViewModel
+import com.tobiapplications.kmpmeetup.uilayer.overview.OverviewViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -14,8 +15,14 @@ object KoinAndroid {
             )
         }
         viewModel {
-            DetailViewModel(
+            JokesViewModel(
                 getJokesUseCase = get()
+            )
+        }
+        viewModel {
+            DatabaseViewModel(
+                storeNameUseCase = get(),
+                getNameUseCase = get()
             )
         }
     }

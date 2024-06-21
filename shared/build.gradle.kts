@@ -1,12 +1,16 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.androidx.room)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kmp.nativecoroutines)
     alias(libs.plugins.ksp)
 }
 
+
 kotlin {
+    jvmToolchain(17)
+
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -14,7 +18,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -29,6 +33,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.androidx.sqlite)
             implementation(libs.koin.core)
             implementation(libs.kotlin.coroutines.core)
             implementation(libs.ktor.client.core)
@@ -66,5 +72,23 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    add("kspIosX64", libs.androidx.room.compiler)
+    add("kspIosArm64", libs.androidx.room.compiler)
+    add("kspCommonMainMetadata", libs.androidx.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata" ) {
+        dependsOn("kspCommonMainKotlinMetadata")
     }
 }

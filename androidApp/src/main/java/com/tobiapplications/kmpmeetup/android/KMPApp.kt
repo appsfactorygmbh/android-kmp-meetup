@@ -2,7 +2,7 @@ package com.tobiapplications.kmpmeetup.android
 
 import android.app.Application
 import com.tobiapplications.kmpmeetup.android.di.KoinAndroid
-import com.tobiapplications.kmpmeetup.di.KoinShared
+import com.tobiapplications.kmpmeetup.utils.di.KoinShared
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

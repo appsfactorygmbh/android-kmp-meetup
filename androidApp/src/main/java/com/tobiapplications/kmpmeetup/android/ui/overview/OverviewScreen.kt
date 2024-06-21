@@ -16,19 +16,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.tobiapplications.kmpmeetup.Greeting
+import com.tobiapplications.kmpmeetup.utils.Greeting
 import com.tobiapplications.kmpmeetup.android.ui.composables.JokeText
+import com.tobiapplications.kmpmeetup.android.ui.main.Database
+import com.tobiapplications.kmpmeetup.android.ui.main.Jokes
+import com.tobiapplications.kmpmeetup.android.ui.main.Screen
 import com.tobiapplications.kmpmeetup.android.utils.KMPTheme
 import com.tobiapplications.kmpmeetup.android.utils.ThemePreviews
-import com.tobiapplications.kmpmeetup.model.JokeResponse
-import com.tobiapplications.kmpmeetup.viewmodel.overview.JokeUiState
+import com.tobiapplications.kmpmeetup.domainlayer.model.Joke
+import com.tobiapplications.kmpmeetup.uilayer.overview.JokeUiState
 
 
 @Composable
 fun OverviewScreen(
     jokeUiState: JokeUiState,
-    onOpenDetailsClicked: () -> Unit,
     onRequestJokeClicked: () -> Unit,
+    onOpenScreen: (Screen) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -63,9 +66,18 @@ fun OverviewScreen(
                 JokeView(jokeUiState = jokeUiState)
                 Spacer(modifier = Modifier.weight(1f))
                 Button(
-                    onClick = onOpenDetailsClicked
+                    onClick = {
+                        onOpenScreen(Jokes)
+                    }
                 ) {
-                    Text(text = "Open details", color = Color.White)
+                    Text(text = "Open Jokes", color = Color.White)
+                }
+                Button(
+                    onClick = {
+                        onOpenScreen(Database)
+                    }
+                ) {
+                    Text(text = "Open Database Example", color = Color.White)
                 }
             }
         }
@@ -78,7 +90,7 @@ private fun JokeView(jokeUiState: JokeUiState) {
         is JokeUiState.Idle -> Text(text = "Press the button and laugh :)")
         is JokeUiState.Loading -> CircularProgressIndicator()
         is JokeUiState.Data -> JokeText(
-            jokeResponse = jokeUiState.jokeResponse
+            joke = jokeUiState.joke
         )
     }
 }
@@ -89,14 +101,14 @@ fun DefaultPreview() {
     KMPTheme {
         OverviewScreen(
             jokeUiState = JokeUiState.Data(
-                jokeResponse = JokeResponse(
+                joke = Joke(
                     question = "Joke question",
                     answer = "Joke answer",
-                    joke = ""
+                    jokeText = ""
                 )
             ),
-            onOpenDetailsClicked = {},
-            onRequestJokeClicked = {}
+            onRequestJokeClicked = {},
+            onOpenScreen = { _ ->}
         )
     }
 }

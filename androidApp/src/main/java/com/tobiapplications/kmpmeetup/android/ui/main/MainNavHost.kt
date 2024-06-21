@@ -5,7 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.tobiapplications.kmpmeetup.android.ui.detail.DetailRoute
+import com.tobiapplications.kmpmeetup.android.ui.database.DatabaseRoute
+import com.tobiapplications.kmpmeetup.android.ui.jokes.JokesRoute
 import com.tobiapplications.kmpmeetup.android.ui.overview.OverviewRoute
 
 @Composable
@@ -18,13 +19,18 @@ fun MainNavHost() {
     ) {
         composable<Overview> {
             OverviewRoute(
-                onOpenDetailsClicked = {
-                    navController.navigate(Details)
+                onOpenScreen = { navController.navigate(it) }
+            )
+        }
+        composable<Jokes> {
+            JokesRoute(
+                onNavigateBack = {
+                    navController.popBackStack()
                 }
             )
         }
-        composable<Details> {
-            DetailRoute(
+        composable<Database> {
+            DatabaseRoute(
                 onNavigateBack = {
                     navController.popBackStack()
                 }

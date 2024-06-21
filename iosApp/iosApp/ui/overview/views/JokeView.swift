@@ -11,7 +11,7 @@ struct JokeView: View {
         Group {
             switch jokeUiState {
             case is JokeUiStateIdle:
-                Text("Press Button to load a joke")
+                Text("Press the button and laugh :)")
             case is JokeUiStateLoading:
                 ProgressView()
             case let dataState as JokeUiStateData:

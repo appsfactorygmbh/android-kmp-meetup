@@ -2,9 +2,15 @@ package com.tobiapplications.kmpmeetup.android.ui.main
 
 import kotlinx.serialization.Serializable
 
-@Serializable
-data object Overview
+
+interface Screen
 
 @Serializable
-data object Details
+data object Overview : Screen
+
+@Serializable
+data object Jokes : Screen
+
+@Serializable
+data object Database : Screen
 

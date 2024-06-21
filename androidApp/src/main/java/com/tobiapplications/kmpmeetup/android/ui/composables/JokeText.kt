@@ -6,29 +6,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import com.tobiapplications.kmpmeetup.model.JokeResponse
+import com.tobiapplications.kmpmeetup.domainlayer.model.Joke
 
 @Composable
 fun JokeText(
-    jokeResponse: JokeResponse,
+    joke: Joke,
     modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (jokeResponse.joke.isNotEmpty()) {
+        if (joke.jokeText.isNotEmpty()) {
             Text(
-                text = jokeResponse.joke,
+                text = joke.jokeText,
                 textAlign = TextAlign.Center
             )
-        } else if (jokeResponse.question.isNotEmpty() && jokeResponse.answer.isNotEmpty()) {
+        } else if (joke.question.isNotEmpty() && joke.answer.isNotEmpty()) {
             Text(
-                text = jokeResponse.question,
+                text = joke.question,
                 textAlign = TextAlign.Center
             )
             Text(
-                text = jokeResponse.answer,
+                text = joke.answer,
                 textAlign = TextAlign.Center
             )
         }
