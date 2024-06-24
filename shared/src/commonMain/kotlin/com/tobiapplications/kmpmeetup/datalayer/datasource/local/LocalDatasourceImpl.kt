@@ -7,7 +7,7 @@ import com.tobiapplications.kmpmeetup.domainlayer.model.Name
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 
-class LocalDatasourceImpl(
+internal class LocalDatasourceImpl(
     private val roomDao: RoomDao
 ) : LocalDatasource {
 

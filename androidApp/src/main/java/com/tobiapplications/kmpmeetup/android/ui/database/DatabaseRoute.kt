@@ -14,6 +14,7 @@ fun DatabaseRoute(
     DatabaseScreen(
         databaseUiState = databaseUiState,
         onNavigateBack = onNavigateBack,
-        onStoreNameClicked = viewModel::storeName
+        onStoreNameClicked = viewModel::storeName,
+        onSnackbarDismissed = viewModel::onSnackbarDismissed
     )
 }

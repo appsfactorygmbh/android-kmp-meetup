@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.tobiapplications.kmpmeetup.android.ui.database.DatabaseRoute
 import com.tobiapplications.kmpmeetup.android.ui.jokes.JokesRoute
 import com.tobiapplications.kmpmeetup.android.ui.overview.OverviewRoute
+import com.tobiapplications.kmpmeetup.android.ui.singlejoke.SingleJokeRoute
 
 @Composable
 fun MainNavHost() {
@@ -20,6 +21,13 @@ fun MainNavHost() {
         composable<Overview> {
             OverviewRoute(
                 onOpenScreen = { navController.navigate(it) }
+            )
+        }
+        composable<SingleJoke> {
+            SingleJokeRoute(
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
             )
         }
         composable<Jokes> {

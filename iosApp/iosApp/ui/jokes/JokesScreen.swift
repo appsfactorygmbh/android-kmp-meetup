@@ -2,13 +2,13 @@
 import SwiftUI
 import shared
 
-struct DetailView : View {
+struct JokesScreen : View {
     
     @StateObject private var viewModel = ViewModel()
     
     var body: some View {
-        switch self.viewModel.jokeState {
-        case .initialLoading:
+        switch self.viewModel.jokeUiState {
+        case .loading:
             ProgressView()
         case .data(let joke):
             JokeTextView(joke: joke)
@@ -19,5 +19,5 @@ struct DetailView : View {
 
 
 #Preview {
-    DetailView()
+    JokesScreen()
 }

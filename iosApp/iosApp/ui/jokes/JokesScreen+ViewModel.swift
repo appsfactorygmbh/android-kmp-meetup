@@ -5,7 +5,7 @@ import KMPNativeCoroutinesCombine
 import Combine
 
 
-extension DetailView {
+extension JokesScreen {
     
     
     final class ViewModel : ObservableObject {
@@ -14,7 +14,7 @@ extension DetailView {
         private var cancellables = Set<AnyCancellable>()
 
         @Published
-        private(set) var jokeState: JokeState = .initialLoading
+        private(set) var jokeUiState: JokeUiState = .loading
         
         init() {
             createPublisher(for: self.getJokesUseCase.invoke())
@@ -22,7 +22,7 @@ extension DetailView {
                 .sink(
                     receiveCompletion: { _ in },
                     receiveValue: { [weak self] item in
-                        self?.jokeState = .data(joke: item)
+                        self?.jokeUiState = .data(joke: item)
                     }
                 ).store(in: &self.cancellables)
         }

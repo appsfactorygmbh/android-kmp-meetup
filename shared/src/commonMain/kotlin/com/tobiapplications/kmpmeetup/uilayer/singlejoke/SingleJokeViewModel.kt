@@ -1,4 +1,4 @@
-package com.tobiapplications.kmpmeetup.uilayer.overview
+package com.tobiapplications.kmpmeetup.uilayer.singlejoke
 
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import com.rickclephas.kmp.observableviewmodel.MutableStateFlow
@@ -10,20 +10,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 
-class OverviewViewModel(
+class SingleJokeViewModel(
     private val getJokeUseCase: GetJokeUseCase
 ) : ViewModel() {
 
-    private val _jokeUiState = MutableStateFlow<JokeUiState>(viewModelScope, JokeUiState.Idle)
+    private val _singleJokeUiState = MutableStateFlow<SingleJokeUiState>(viewModelScope, SingleJokeUiState.Idle)
     @NativeCoroutinesState
-    val jokeUiState = _jokeUiState.asStateFlow()
+    val singleJokeUiState = _singleJokeUiState.asStateFlow()
 
     fun requestJoke() {
         viewModelScope.launch {
-            _jokeUiState.update { JokeUiState.Loading }
+            _singleJokeUiState.update { SingleJokeUiState.Loading }
             delay(1000)
             val joke = getJokeUseCase.invoke()
-            _jokeUiState.update { JokeUiState.Data(joke = joke) }
+            _singleJokeUiState.update { SingleJokeUiState.Data(joke = joke) }
         }
     }
 }

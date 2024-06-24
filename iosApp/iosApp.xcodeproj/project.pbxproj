@@ -10,7 +10,8 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		7555FF83242A565900829871 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* OverviewView.swift */; };
+		7555FF83242A565900829871 /* OverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* OverviewScreen.swift */; };
+		861857452C29AB9700F75E59 /* SwiftUISnackbar in Frameworks */ = {isa = PBXBuildFile; productRef = 861857442C29AB9700F75E59 /* SwiftUISnackbar */; };
 		861F5C7B2C200E8600BD921A /* commonMain in Resources */ = {isa = PBXBuildFile; fileRef = 861F5C792C200E8600BD921A /* commonMain */; };
 		861F5C7C2C200E8600BD921A /* iosMain in Resources */ = {isa = PBXBuildFile; fileRef = 861F5C7A2C200E8600BD921A /* iosMain */; };
 		861F5C7F2C201E5500BD921A /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 861F5C7E2C201E5500BD921A /* KMPNativeCoroutinesAsync */; };
@@ -22,13 +23,15 @@
 		861F5C8D2C20297800BD921A /* KMPObservableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F5C8C2C20297800BD921A /* KMPObservableViewModel.swift */; };
 		861F5C8F2C2029F600BD921A /* KMPObservableViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = 861F5C8E2C2029F600BD921A /* KMPObservableViewModelCore */; };
 		861F5C912C2029F600BD921A /* KMPObservableViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 861F5C902C2029F600BD921A /* KMPObservableViewModelSwiftUI */; };
-		861F5C962C20772400BD921A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F5C952C20772400BD921A /* DetailView.swift */; };
-		861F5C9B2C20866D00BD921A /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F5C9A2C20866D00BD921A /* JokeView.swift */; };
-		8629BBDB2C2418390078DF78 /* DetailView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629BBDA2C2418390078DF78 /* DetailView+ViewModel.swift */; };
+		861F5C962C20772400BD921A /* JokesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F5C952C20772400BD921A /* JokesScreen.swift */; };
+		8629BBDB2C2418390078DF78 /* JokesScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629BBDA2C2418390078DF78 /* JokesScreen+ViewModel.swift */; };
 		8629BBDD2C2447610078DF78 /* JokeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629BBDC2C2447610078DF78 /* JokeTextView.swift */; };
-		8629BBDF2C2469640078DF78 /* JokeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629BBDE2C2469640078DF78 /* JokeState.swift */; };
+		8629BBDF2C2469640078DF78 /* JokeUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629BBDE2C2469640078DF78 /* JokeUiState.swift */; };
 		8634BB6D2C21A5C9009E9D78 /* Koin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8634BB6C2C21A5C9009E9D78 /* Koin.swift */; };
-		8648B9AA2C2305AE0023DD7E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648B9A92C2305AE0023DD7E /* MainView.swift */; };
+		8689B3C02C25B7920050BC70 /* SingleJokeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689B3BF2C25B7920050BC70 /* SingleJokeScreen.swift */; };
+		8689B3C42C25C9620050BC70 /* DatabaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689B3C32C25C9620050BC70 /* DatabaseScreen.swift */; };
+		8689B3C62C25CC4D0050BC70 /* DatabaseScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689B3C52C25CC4D0050BC70 /* DatabaseScreen+ViewModel.swift */; };
+		8689B3C82C25CD050050BC70 /* DatabaseUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689B3C72C25CD050050BC70 /* DatabaseUiState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,18 +52,20 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
+		7555FF82242A565900829871 /* OverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewScreen.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		861F5C792C200E8600BD921A /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
 		861F5C7A2C200E8600BD921A /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		861F5C8C2C20297800BD921A /* KMPObservableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPObservableViewModel.swift; sourceTree = "<group>"; };
-		861F5C952C20772400BD921A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		861F5C9A2C20866D00BD921A /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
-		8629BBDA2C2418390078DF78 /* DetailView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailView+ViewModel.swift"; sourceTree = "<group>"; };
+		861F5C952C20772400BD921A /* JokesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesScreen.swift; sourceTree = "<group>"; };
+		8629BBDA2C2418390078DF78 /* JokesScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JokesScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		8629BBDC2C2447610078DF78 /* JokeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeTextView.swift; sourceTree = "<group>"; };
-		8629BBDE2C2469640078DF78 /* JokeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeState.swift; sourceTree = "<group>"; };
+		8629BBDE2C2469640078DF78 /* JokeUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeUiState.swift; sourceTree = "<group>"; };
 		8634BB6C2C21A5C9009E9D78 /* Koin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Koin.swift; sourceTree = "<group>"; };
-		8648B9A92C2305AE0023DD7E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8689B3BF2C25B7920050BC70 /* SingleJokeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleJokeScreen.swift; sourceTree = "<group>"; };
+		8689B3C32C25C9620050BC70 /* DatabaseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseScreen.swift; sourceTree = "<group>"; };
+		8689B3C52C25CC4D0050BC70 /* DatabaseScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseScreen+ViewModel.swift"; sourceTree = "<group>"; };
+		8689B3C72C25CD050050BC70 /* DatabaseUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUiState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 				861F5C882C201F7100BD921A /* KMPObservableViewModelCore in Frameworks */,
 				861F5C8A2C201F7100BD921A /* KMPObservableViewModelSwiftUI in Frameworks */,
 				861F5C832C201E5500BD921A /* KMPNativeCoroutinesCore in Frameworks */,
+				861857452C29AB9700F75E59 /* SwiftUISnackbar in Frameworks */,
 				861F5C852C201E5500BD921A /* KMPNativeCoroutinesRxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,39 +155,31 @@
 		861F5C922C20766400BD921A /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				8648B9A82C23059A0023DD7E /* main */,
+				8689B3C22C25C9560050BC70 /* database */,
+				8689B3C12C25C93D0050BC70 /* views */,
+				8689B3BE2C25B7760050BC70 /* singlejoke */,
 				861F5C942C2076FA00BD921A /* overview */,
-				861F5C932C2076F300BD921A /* detail */,
+				861F5C932C2076F300BD921A /* jokes */,
 			);
 			path = ui;
 			sourceTree = "<group>";
 		};
-		861F5C932C2076F300BD921A /* detail */ = {
+		861F5C932C2076F300BD921A /* jokes */ = {
 			isa = PBXGroup;
 			children = (
-				861F5C952C20772400BD921A /* DetailView.swift */,
-				8629BBDA2C2418390078DF78 /* DetailView+ViewModel.swift */,
-				8629BBDE2C2469640078DF78 /* JokeState.swift */,
+				861F5C952C20772400BD921A /* JokesScreen.swift */,
+				8629BBDA2C2418390078DF78 /* JokesScreen+ViewModel.swift */,
+				8629BBDE2C2469640078DF78 /* JokeUiState.swift */,
 			);
-			path = detail;
+			path = jokes;
 			sourceTree = "<group>";
 		};
 		861F5C942C2076FA00BD921A /* overview */ = {
 			isa = PBXGroup;
 			children = (
-				861F5C972C20853800BD921A /* views */,
-				7555FF82242A565900829871 /* OverviewView.swift */,
+				7555FF82242A565900829871 /* OverviewScreen.swift */,
 			);
 			path = overview;
-			sourceTree = "<group>";
-		};
-		861F5C972C20853800BD921A /* views */ = {
-			isa = PBXGroup;
-			children = (
-				861F5C9A2C20866D00BD921A /* JokeView.swift */,
-				8629BBDC2C2447610078DF78 /* JokeTextView.swift */,
-			);
-			path = views;
 			sourceTree = "<group>";
 		};
 		8634BB6B2C21A5B9009E9D78 /* di */ = {
@@ -192,12 +190,30 @@
 			path = di;
 			sourceTree = "<group>";
 		};
-		8648B9A82C23059A0023DD7E /* main */ = {
+		8689B3BE2C25B7760050BC70 /* singlejoke */ = {
 			isa = PBXGroup;
 			children = (
-				8648B9A92C2305AE0023DD7E /* MainView.swift */,
+				8689B3BF2C25B7920050BC70 /* SingleJokeScreen.swift */,
 			);
-			path = main;
+			path = singlejoke;
+			sourceTree = "<group>";
+		};
+		8689B3C12C25C93D0050BC70 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8629BBDC2C2447610078DF78 /* JokeTextView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		8689B3C22C25C9560050BC70 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				8689B3C32C25C9620050BC70 /* DatabaseScreen.swift */,
+				8689B3C52C25CC4D0050BC70 /* DatabaseScreen+ViewModel.swift */,
+				8689B3C72C25CD050050BC70 /* DatabaseUiState.swift */,
+			);
+			path = database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +243,7 @@
 				861F5C892C201F7100BD921A /* KMPObservableViewModelSwiftUI */,
 				861F5C8E2C2029F600BD921A /* KMPObservableViewModelCore */,
 				861F5C902C2029F600BD921A /* KMPObservableViewModelSwiftUI */,
+				861857442C29AB9700F75E59 /* SwiftUISnackbar */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
@@ -259,6 +276,7 @@
 			packageReferences = (
 				861F5C7D2C201E5400BD921A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 				861F5C862C201F7100BD921A /* XCRemoteSwiftPackageReference "KMP-ObservableViewModel" */,
+				861857432C29AB9700F75E59 /* XCRemoteSwiftPackageReference "SwiftUISnackbar" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -308,16 +326,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				861F5C962C20772400BD921A /* DetailView.swift in Sources */,
+				8689B3C82C25CD050050BC70 /* DatabaseUiState.swift in Sources */,
+				861F5C962C20772400BD921A /* JokesScreen.swift in Sources */,
 				8634BB6D2C21A5C9009E9D78 /* Koin.swift in Sources */,
+				8689B3C42C25C9620050BC70 /* DatabaseScreen.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7555FF83242A565900829871 /* OverviewView.swift in Sources */,
-				8629BBDF2C2469640078DF78 /* JokeState.swift in Sources */,
-				8648B9AA2C2305AE0023DD7E /* MainView.swift in Sources */,
+				8689B3C02C25B7920050BC70 /* SingleJokeScreen.swift in Sources */,
+				7555FF83242A565900829871 /* OverviewScreen.swift in Sources */,
+				8629BBDF2C2469640078DF78 /* JokeUiState.swift in Sources */,
+				8689B3C62C25CC4D0050BC70 /* DatabaseScreen+ViewModel.swift in Sources */,
 				861F5C8D2C20297800BD921A /* KMPObservableViewModel.swift in Sources */,
 				8629BBDD2C2447610078DF78 /* JokeTextView.swift in Sources */,
-				861F5C9B2C20866D00BD921A /* JokeView.swift in Sources */,
-				8629BBDB2C2418390078DF78 /* DetailView+ViewModel.swift in Sources */,
+				8629BBDB2C2418390078DF78 /* JokesScreen+ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +542,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		861857432C29AB9700F75E59 /* XCRemoteSwiftPackageReference "SwiftUISnackbar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zaniluca/SwiftUISnackbar";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		861F5C7D2C201E5400BD921A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
@@ -541,6 +569,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		861857442C29AB9700F75E59 /* SwiftUISnackbar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 861857432C29AB9700F75E59 /* XCRemoteSwiftPackageReference "SwiftUISnackbar" */;
+			productName = SwiftUISnackbar;
+		};
 		861F5C7E2C201E5500BD921A /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 861F5C7D2C201E5400BD921A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;

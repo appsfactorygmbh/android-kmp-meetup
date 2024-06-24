@@ -1,7 +1,7 @@
 import shared
 
-enum JokeState: Equatable {
-    case initialLoading
+enum JokeUiState: Equatable {
+    case loading
     case data(
         joke: Joke
     )

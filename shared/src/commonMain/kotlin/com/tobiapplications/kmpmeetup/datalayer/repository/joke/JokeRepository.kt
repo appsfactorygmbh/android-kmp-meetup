@@ -8,5 +8,6 @@ interface JokeRepository {
 
     @NativeCoroutines
     suspend fun getJoke() : Joke
+    @NativeCoroutines
     fun getJokes(): Flow<Joke>
 }

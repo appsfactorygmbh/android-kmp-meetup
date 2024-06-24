@@ -9,6 +9,9 @@ interface Screen
 data object Overview : Screen
 
 @Serializable
+data object SingleJoke : Screen
+
+@Serializable
 data object Jokes : Screen
 
 @Serializable
