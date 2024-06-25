@@ -1,4 +1,4 @@
-package com.tobiapplications.kmpmeetup.uilayer.singlejoke
+package com.tobiapplications.kmpmeetup.uilayer
 
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import com.rickclephas.kmp.observableviewmodel.MutableStateFlow

@@ -5,8 +5,6 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.tobiapplications.kmpmeetup.datalayer.datasource.local.utils.database.KMPDatabase
 import com.tobiapplications.kmpmeetup.datalayer.datasource.local.utils.database.instantiateImpl
 import com.tobiapplications.kmpmeetup.datalayer.datasource.local.utils.database.kmpDatabaseName
-import com.tobiapplications.kmpmeetup.utils.IOSPlatform
-import com.tobiapplications.kmpmeetup.utils.Platform
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import org.koin.core.module.Module
@@ -17,7 +15,6 @@ import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
 
 actual val platformModule: Module = module {
-    single<Platform> { IOSPlatform() }
     single<KMPDatabase> { createKMPDatabase() }
 }
 

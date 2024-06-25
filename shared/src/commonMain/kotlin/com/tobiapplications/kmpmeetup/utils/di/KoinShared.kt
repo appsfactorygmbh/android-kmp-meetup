@@ -18,7 +18,6 @@ import com.tobiapplications.kmpmeetup.datalayer.repository.platform.PlatformRepo
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetJokeUseCase
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetJokesUseCase
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetNameUseCase
-import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetPlatformUseCase
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.StoreNameUseCase
 import org.koin.dsl.module
 
@@ -77,11 +76,6 @@ object KoinShared {
         factory {
             GetJokesUseCase(
                 jokeRepository = get()
-            )
-        }
-        factory {
-            GetPlatformUseCase(
-                platformRepository = get()
             )
         }
         factory {

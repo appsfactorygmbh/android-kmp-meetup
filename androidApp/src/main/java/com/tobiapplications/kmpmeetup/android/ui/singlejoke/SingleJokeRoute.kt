@@ -3,8 +3,8 @@ package com.tobiapplications.kmpmeetup.android.ui.singlejoke
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.tobiapplications.kmpmeetup.uilayer.singlejoke.SingleJokeUiState
-import com.tobiapplications.kmpmeetup.uilayer.singlejoke.SingleJokeViewModel
+import com.tobiapplications.kmpmeetup.uilayer.SingleJokeUiState
+import com.tobiapplications.kmpmeetup.uilayer.SingleJokeViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

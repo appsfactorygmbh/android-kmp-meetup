@@ -5,14 +5,11 @@ import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.tobiapplications.kmpmeetup.datalayer.datasource.local.utils.database.KMPDatabase
 import com.tobiapplications.kmpmeetup.datalayer.datasource.local.utils.database.kmpDatabaseName
-import com.tobiapplications.kmpmeetup.utils.AndroidPlatform
-import com.tobiapplications.kmpmeetup.utils.Platform
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
 actual val platformModule: Module = module {
-    single<Platform> { AndroidPlatform() }
     single<KMPDatabase> { createKMPDatabase(get()) }
 }
 

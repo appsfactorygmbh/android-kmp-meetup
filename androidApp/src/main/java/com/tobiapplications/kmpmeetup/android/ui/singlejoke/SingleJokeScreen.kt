@@ -18,7 +18,7 @@ import com.tobiapplications.kmpmeetup.android.ui.composables.KMPAppBar
 import com.tobiapplications.kmpmeetup.android.utils.KMPTheme
 import com.tobiapplications.kmpmeetup.android.utils.ThemePreviews
 import com.tobiapplications.kmpmeetup.domainlayer.model.Joke
-import com.tobiapplications.kmpmeetup.uilayer.singlejoke.SingleJokeUiState
+import com.tobiapplications.kmpmeetup.uilayer.SingleJokeUiState
 
 @Composable
 fun SingleJokeScreen(

@@ -4,7 +4,6 @@ import shared
 
 struct OverviewScreen: View {
     
-    
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {

@@ -11,8 +11,10 @@ fun DatabaseRoute(
     viewModel: DatabaseViewModel = koinViewModel()
 ) {
     val databaseUiState by viewModel.databaseUiState.collectAsState()
+    val nameStoredSuccessful by viewModel.nameStoredSuccessful.collectAsState()
     DatabaseScreen(
         databaseUiState = databaseUiState,
+        nameStoredSuccessful = nameStoredSuccessful,
         onNavigateBack = onNavigateBack,
         onStoreNameClicked = viewModel::storeName,
         onSnackbarDismissed = viewModel::onSnackbarDismissed

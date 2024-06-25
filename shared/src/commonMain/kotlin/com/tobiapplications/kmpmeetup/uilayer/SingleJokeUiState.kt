@@ -1,4 +1,4 @@
-package com.tobiapplications.kmpmeetup.uilayer.singlejoke
+package com.tobiapplications.kmpmeetup.uilayer
 
 import com.tobiapplications.kmpmeetup.domainlayer.model.Joke
 

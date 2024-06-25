@@ -21,14 +21,14 @@ extension DatabaseScreen {
         var storeSuccess = false
         
         init() {
-            createPublisher(for: self.getNameUseCase.invoke())
+            createPublisher(for: getNameUseCase.invoke())
                 .receive(on: DispatchQueue.main)
                 .sink(
                     receiveCompletion: { _ in },
                     receiveValue: { [weak self] name in
                         self?.databaseUiState = .data(name: name.text)
                     }
-                ).store(in: &self.cancellables)
+                ).store(in: &cancellables)
         }
         
         func storeName(text: String) {

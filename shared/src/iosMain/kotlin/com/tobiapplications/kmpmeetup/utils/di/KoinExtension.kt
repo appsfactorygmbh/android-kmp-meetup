@@ -3,7 +3,6 @@ package com.tobiapplications.kmpmeetup.utils.di
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetJokeUseCase
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetJokesUseCase
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetNameUseCase
-import com.tobiapplications.kmpmeetup.domainlayer.usecase.GetPlatformUseCase
 import com.tobiapplications.kmpmeetup.domainlayer.usecase.StoreNameUseCase
 import com.tobiapplications.kmpmeetup.utils.Platform
 import org.koin.core.Koin
@@ -16,7 +15,6 @@ val Koin.platform: Platform
 object Usecases : KoinComponent {
     val getJokeUseCase: GetJokeUseCase = get()
     val getJokesUseCase: GetJokesUseCase = get()
-    val getPlatformUseCase: GetPlatformUseCase = get()
     val storeNameUseCase: StoreNameUseCase = get()
     val getNameUseCase: GetNameUseCase = get()
 }

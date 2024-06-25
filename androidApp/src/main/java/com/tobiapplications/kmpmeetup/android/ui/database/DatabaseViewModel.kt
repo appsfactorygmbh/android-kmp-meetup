@@ -8,7 +8,7 @@ import com.tobiapplications.kmpmeetup.domainlayer.usecase.StoreNameUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -18,23 +18,16 @@ class DatabaseViewModel(
     private val storeNameUseCase: StoreNameUseCase,
 ) : ViewModel() {
 
-    private val storedName = getNameUseCase.invoke()
-    private val nameStoredSuccessful = MutableStateFlow(false)
-
-    val databaseUiState: StateFlow<DatabaseUiState> = combine(
-        storedName, nameStoredSuccessful
-    ) { name, success ->
+    val nameStoredSuccessful = MutableStateFlow(false)
+    val databaseUiState: StateFlow<DatabaseUiState> = getNameUseCase.invoke().map {
         DatabaseUiState.Data(
-            name = name.text,
-            showSuccessSnackbar = success
+            name = it.text,
         )
-    }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = DatabaseUiState.Idle
-        )
-
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = DatabaseUiState.Idle
+    )
 
     fun storeName(text: String) {
         viewModelScope.launch {

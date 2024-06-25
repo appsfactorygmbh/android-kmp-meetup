@@ -9,12 +9,10 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,6 +30,7 @@ import com.tobiapplications.kmpmeetup.android.utils.ThemePreviews
 @Composable
 fun DatabaseScreen(
     databaseUiState: DatabaseUiState,
+    nameStoredSuccessful: Boolean,
     onNavigateBack: () -> Unit,
     onStoreNameClicked: (String) -> Unit,
     onSnackbarDismissed: () -> Unit,
@@ -56,50 +55,43 @@ fun DatabaseScreen(
                 }
             )
         }
-
-        Surface(
-            color = MaterialTheme.colorScheme.background,
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
+                .padding(all = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(all = 24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+            Text(text = "Please enter your name")
+            OutlinedTextField(
+                value = name,
+                onValueChange = { name = it },
+                label = {
+                    Text(text = "Your name")
+                },
+                trailingIcon = {
+                    IconButton(onClick = {
+                        name = ""
+                    }) {
+                        Icon(imageVector = Icons.Filled.Clear, contentDescription = null)
+                    }
+                },
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Button(
+                onClick = { onStoreNameClicked(name) },
+                modifier = Modifier.padding(top = 16.dp),
             ) {
-                Text(text = "Please enter your name")
-                OutlinedTextField(
-                    value = name,
-                    onValueChange = { name = it },
-                    label = {
-                        Text(text = "Your name")
-                    },
-                    trailingIcon = {
-                        IconButton(onClick = {
-                            name = ""
-                        }) {
-                            Icon(imageVector = Icons.Filled.Clear, contentDescription = null)
-                        }
-                    },
-                    modifier = Modifier.padding(top = 16.dp)
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                Button(
-                    onClick = { onStoreNameClicked(name) },
-                    modifier = Modifier.padding(top = 16.dp),
-                ) {
-                    Text(text = "Store your name")
-                }
+                Text(text = "Store your name")
             }
         }
+    }
 
-        if (databaseUiState is DatabaseUiState.Data && databaseUiState.showSuccessSnackbar) {
-           LaunchedEffect(key1 = databaseUiState) {
-               snackbarHostState.showSnackbar(message = "Success")
-               onSnackbarDismissed()
-           }
+    if (nameStoredSuccessful) {
+        LaunchedEffect(key1 = Unit) {
+            snackbarHostState.showSnackbar(message = "Name stored successfully")
+            onSnackbarDismissed()
         }
     }
 }
@@ -112,11 +104,11 @@ fun DefaultPreview() {
         DatabaseScreen(
             databaseUiState = DatabaseUiState.Data(
                 name = "name",
-                showSuccessSnackbar = false
             ),
+            nameStoredSuccessful = false,
             onNavigateBack = {},
             onStoreNameClicked = { _ -> },
-            onSnackbarDismissed =  {}
+            onSnackbarDismissed = {}
         )
     }
 }

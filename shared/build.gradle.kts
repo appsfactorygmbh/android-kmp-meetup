@@ -20,7 +20,7 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "11"
+                jvmTarget = JavaVersion.VERSION_17.toString()
             }
         }
     }
@@ -49,12 +49,8 @@ kotlin {
             implementation(libs.ktor.serialization)
             api(libs.kmp.observableviewmodel)
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
         androidMain.dependencies {
-            implementation(libs.androidx.lifecycle.viewmodel.ktx)
-            implementation(libs.kotlin.coroutines.android) // TODO remove?
+            implementation(libs.androidx.lifecycle.viewmodel.ktx) // Remove if we don't use platform viewmodel?
             implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {
@@ -80,8 +76,8 @@ android {
         minSdk = 28
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
