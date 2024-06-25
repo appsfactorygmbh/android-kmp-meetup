@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kmp.nativecoroutines)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.skie)
 }
 
 
@@ -50,7 +51,6 @@ kotlin {
             api(libs.kmp.observableviewmodel)
         }
         androidMain.dependencies {
-            implementation(libs.androidx.lifecycle.viewmodel.ktx) // Remove if we don't use platform viewmodel?
             implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {
@@ -70,7 +70,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.tobiapplications.kmpmeetup"
+    namespace = "de.appsfactory.kmpmeetup"
     compileSdk = 34
     defaultConfig {
         minSdk = 28

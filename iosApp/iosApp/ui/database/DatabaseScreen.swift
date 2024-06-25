@@ -6,18 +6,19 @@ import SwiftUISnackbar
 struct DatabaseScreen : View {
     
     @StateObject var viewModel = ViewModel()
-    @State private var storedName: String = ""
+    @State private var userName: String = ""
     
     var body: some View {
         Group {
             VStack(alignment: .center) {
-                Text("Please enter your name")
-                TextField("Your name", text: $storedName)
+                Text("Please enter your username")
+                TextField("Your username", text: $userName)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 200)
                 Spacer()
-                Button("Store your name") {
-                    viewModel.storeName(text: storedName)
+                Button("Store your username") {
+                    userName = userName.trimmingCharacters(in: .whitespacesAndNewlines)
+                    viewModel.storeUserName(userName: userName)
                 }.buttonStyle(.borderedProminent)
                     .padding(.top, 24)
                     .tint(.red)
@@ -26,12 +27,17 @@ struct DatabaseScreen : View {
             .onReceive(viewModel.$databaseUiState) { state in
                 switch state {
                 case .idle:
-                    storedName = ""
+                    userName = ""
                 case .data(let name):
-                    storedName = name
+                    userName = name
                 }
             }
-        }.snackbar(isShowing: $viewModel.storeSuccess, title: "Name stored successfully", style: .custom(.black))
+        }.snackbar(
+            isShowing: $viewModel.userNameStoredSuccessfully,
+            title: userName.isEmpty ? "Username cleared successfully" :
+                "Username (\(userName)) stored successfully",
+            style: .custom(.black)
+        )
     }
     
     

@@ -10,31 +10,35 @@ extension DatabaseScreen {
     
     final class ViewModel : ObservableObject {
         
-        let getNameUseCase = koin.usecases.getNameUseCase
-        let storeNameUseCae = koin.usecases.storeNameUseCase
+        let getUserNameUseCase = koin.usecases.getUserNameUseCase
+        let storeUserNameUseCase = koin.usecases.storeUserNameUseCase
         private var cancellables = Set<AnyCancellable>()
         
         @Published
         private(set) var databaseUiState: DatabaseUiState = .idle
         
         @Published
-        var storeSuccess = false
+        var userNameStoredSuccessfully = false
         
         init() {
-            createPublisher(for: getNameUseCase.invoke())
+            createPublisher(for: getUserNameUseCase.invoke())
                 .receive(on: DispatchQueue.main)
                 .sink(
                     receiveCompletion: { _ in },
-                    receiveValue: { [weak self] name in
-                        self?.databaseUiState = .data(name: name.text)
+                    receiveValue: { [weak self] userName in
+                        self?.databaseUiState = .data(name: userName.text)
                     }
                 ).store(in: &cancellables)
         }
         
-        func storeName(text: String) {
+        @MainActor
+        func storeUserName(userName: String) {
             Task {
-                await asyncResult(for: storeNameUseCae.invoke(name: Name(text: text)))
-                storeSuccess = true
+                let result = await asyncResult(for: storeUserNameUseCase.invoke(userName: UserName(text: userName)))
+        
+                if case .success = result {
+                    userNameStoredSuccessfully = true
+                }
             }
         }
     }

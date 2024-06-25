@@ -6,10 +6,10 @@ plugins {
 }
 
 android {
-    namespace = "com.tobiapplications.kmpmeetup.android"
+    namespace = "de.appsfactory.kmpmeetup.android"
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.tobiapplications.kmpmeetup.android"
+        applicationId = "de.appsfactory.kmpmeetup.android"
         minSdk = 28
         targetSdk = 34
         versionCode = 1

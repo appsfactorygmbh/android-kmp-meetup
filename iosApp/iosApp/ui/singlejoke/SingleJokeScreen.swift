@@ -31,15 +31,13 @@ struct JokeView: View {
     
     var body: some View {
         Group {
-            switch singleJokeUiState {
-            case is SingleJokeUiStateIdle:
+            switch onEnum(of: singleJokeUiState) {
+            case .idle:
                 Text("Press the button and laugh :)")
-            case is SingleJokeUiStateLoading:
+            case .loading:
                 ProgressView()
-            case let dataState as SingleJokeUiStateData:
-                JokeTextView(joke: dataState.joke)
-            default:
-                Text("")
+            case .data(let data):
+                JokeTextView(joke: data.joke)
             }
         }
     }

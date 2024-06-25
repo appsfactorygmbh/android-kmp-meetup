@@ -13,7 +13,7 @@ struct OverviewScreen: View {
                 NavigationLink("Open single joke") {
                     SingleJokeScreen()
                 }.buttonStyle(.borderedProminent).tint(.red)
-                NavigationLink("Open jokes") {
+                NavigationLink("Open jokes flow") {
                     JokesScreen()
                 }.buttonStyle(.borderedProminent).tint(.red)
                 NavigationLink("Open database example") {
