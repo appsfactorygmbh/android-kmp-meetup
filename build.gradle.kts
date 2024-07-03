@@ -9,4 +9,5 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.kmp.nativecoroutines) apply false
     alias(libs.plugins.skie) apply false
+    alias(libs.plugins.kotlin.parcelize) apply false
 }

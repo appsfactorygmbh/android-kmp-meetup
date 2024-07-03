@@ -17,7 +17,7 @@ import de.appsfactory.kmpmeetup.android.utils.ThemePreviews
 import de.appsfactory.kmpmeetup.domainlayer.model.Joke
 
 @Composable
-fun JokesScreen(
+fun JokesFlowScreen(
     jokesFlowUiState: JokesFlowUiState,
     onNavigateBack: () -> Unit
 ) {
@@ -53,7 +53,7 @@ fun JokesScreen(
 @Composable
 fun DefaultPreview() {
     KMPTheme {
-        JokesScreen(
+        JokesFlowScreen(
             jokesFlowUiState = JokesFlowUiState.Data(
                 joke = Joke(
                     question = "",

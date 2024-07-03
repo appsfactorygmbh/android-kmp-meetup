@@ -6,12 +6,12 @@ import androidx.compose.runtime.getValue
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun JokesRoute(
+fun JokesFlowRoute(
     onNavigateBack: () -> Unit,
     viewModel: JokesFlowViewModel = koinViewModel()
 ) {
     val jokesFlowUiState: JokesFlowUiState by viewModel.jokesFlowUiState.collectAsState()
-    JokesScreen(
+    JokesFlowScreen(
         jokesFlowUiState = jokesFlowUiState,
         onNavigateBack = onNavigateBack
     )

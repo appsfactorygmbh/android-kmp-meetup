@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.appsfactory.kmpmeetup.android.ui.database.DatabaseRoute
-import de.appsfactory.kmpmeetup.android.ui.jokesflow.JokesRoute
+import de.appsfactory.kmpmeetup.android.ui.jokesflow.JokesFlowRoute
 import de.appsfactory.kmpmeetup.android.ui.overview.OverviewRoute
 import de.appsfactory.kmpmeetup.android.ui.singlejoke.SingleJokeRoute
 
@@ -31,7 +31,7 @@ fun MainNavHost() {
             )
         }
         composable<Screen.Jokes> {
-            JokesRoute(
+            JokesFlowRoute(
                 onNavigateBack = {
                     navController.popBackStack()
                 }
