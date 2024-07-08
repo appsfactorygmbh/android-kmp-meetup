@@ -17,70 +17,33 @@ import de.appsfactory.kmpmeetup.domainlayer.usecase.GetJokeUseCase
 import de.appsfactory.kmpmeetup.domainlayer.usecase.GetJokesUseCase
 import de.appsfactory.kmpmeetup.domainlayer.usecase.GetUserNameUseCase
 import de.appsfactory.kmpmeetup.domainlayer.usecase.StoreUserNameUseCase
+import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 object KoinShared {
     private val networkModule = module {
-        single<HttpLoggerProvider> {
-            HttpLoggerProviderImpl()
-        }
-        single<HttpClientProvider> {
-            HttpClientProviderImpl(
-                httpLoggerProvider = get()
-            )
-        }
-        single<JokeNetworkDatasource> {
-            JokeNetworkDatasourceImpl(
-                httpClientProvider = get()
-            )
-        }
+        singleOf(::HttpLoggerProviderImpl) bind HttpLoggerProvider::class
+        singleOf(::HttpClientProviderImpl) bind HttpClientProvider::class
+        singleOf(::JokeNetworkDatasourceImpl) bind JokeNetworkDatasource::class
     }
 
     private val databaseModule = module {
-        single {
-            get<KMPDatabase>().roomDao()
-        }
-        single<LocalDatasource> {
-            LocalDatasourceImpl(
-                roomDao = get()
-            )
-        }
+        single { get<KMPDatabase>().roomDao() }
+        singleOf(::LocalDatasourceImpl) bind LocalDatasource::class
     }
 
     private val dataModule = module {
-        single<JokeRepository> {
-            JokeRepositoryImpl(
-                jokeNetworkDatasource = get()
-            )
-        }
-        single<DatabaseRepository> {
-            DatabaseRepositoryImpl(
-                localDatasource = get()
-            )
-        }
+        singleOf(::JokeRepositoryImpl) bind JokeRepository::class
+        singleOf(::DatabaseRepositoryImpl) bind DatabaseRepository::class
     }
 
     private val domainModule = module {
-        factory {
-            GetJokeUseCase(
-                jokeRepository = get()
-            )
-        }
-        factory {
-            GetJokesUseCase(
-                jokeRepository = get()
-            )
-        }
-        factory {
-            StoreUserNameUseCase(
-                databaseRepository = get()
-            )
-        }
-        factory {
-            GetUserNameUseCase(
-                databaseRepository = get()
-            )
-        }
+        factoryOf(::GetJokeUseCase)
+        factoryOf(::GetJokesUseCase)
+        factoryOf(::StoreUserNameUseCase)
+        factoryOf(::GetUserNameUseCase)
     }
 
     val sharedModules = listOf(

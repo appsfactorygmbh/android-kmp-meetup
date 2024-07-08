@@ -8,9 +8,6 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
-import kotlinx.coroutines.withContext
 
 private const val JOKE_PATH = "joke/Programming"
 private const val LANGUAGE_QUERY_PARAM = "lang"
@@ -25,11 +22,10 @@ class JokeNetworkDatasourceImpl(
     }
 
     override suspend fun getJoke(): Joke {
-        val jokeResponse = withContext(Dispatchers.IO) {
-            httpClient.get(JOKE_PATH) {
+        val jokeResponse = httpClient.get(JOKE_PATH) {
                 parameter(LANGUAGE_QUERY_PARAM, LANGUAGE_ENGLISH)
             }.body<ApiJoke>()
-        }
+
         return jokeResponse.mapToEntity()
     }
 }
